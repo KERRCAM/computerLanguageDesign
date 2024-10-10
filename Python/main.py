@@ -6,11 +6,11 @@ from lexer import Lexer
 
 
 def main():
-    filePath = "TestFiles/test1.txt"
+    filePath = "testFiles/test1.txt"
 
     with open(filePath, 'r') as file:
         fileContent = (file.read()).replace("\n", '')
-    
+    print(fileContent)
     _lexer = Lexer(fileContent)
 
 
