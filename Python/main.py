@@ -1,17 +1,15 @@
 
 
 from lexer import Lexer
-import parser
-import ast
 
 
 
 
 def main():
-    filePath = "testFiles/test1.txt"
+    filePath = "TestFiles/test1.txt"
 
     with open(filePath, 'r') as file:
-        fileContent = file.read()
+        fileContent = (file.read()).replace("\n", '')
     
     _lexer = Lexer(fileContent)
 
