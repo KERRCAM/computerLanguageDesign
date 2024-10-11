@@ -1,8 +1,10 @@
-
+# Local Imports
 from token import Token
 
+# ---------------------------------------------------------------------------------------------------------------- #
+
 class Lexer():
-    
+
     singleCharTokens = {
                 '=' : "TOKEN_EQUALS",
                 ';' : "TOKEN_SEMI",   
@@ -28,39 +30,37 @@ class Lexer():
         tokens = self.getTokens()
         
     # ------------------------------------------------------------------------------------------------------------ #
-    
+
     def lexerAdvance(self):
         self.pos += 1
         self.currChar = self.text[self.pos] if self.pos < len(self.text) else None
-        
+
     # ------------------------------------------------------------------------------------------------------------ #
-    
+
     def getTokens(self):
         tokens = []
 
         while self.currChar != None:
-            
+
             if self.currChar == ' ':
                 self.lexerAdvance()
-                
+
             elif (self.currChar).isalnum():
                 tokens.append(self.getID())
-                
+
             elif self.currChar == '"' or self.currChar == "'":
                 tokens.append(self.getString())
-                
+
             elif self.currChar in self.singleCharTokens:
                 tokens.append(Token(self.singleCharTokens[self.currChar], self.currChar))
                 self.lexerAdvance()
-        
+
         #print(tokens)
         for token in tokens:
             print (token.type + ' : ' + token.value)
-            
-            
-                
+
     # ------------------------------------------------------------------------------------------------------------ #
-    
+
     def getID(self):
         idValue = ""
         while (self.currChar).isalnum():
@@ -68,9 +68,9 @@ class Lexer():
             self.lexerAdvance()
         idToken = Token("TOKEN_ID", idValue)
         return idToken
-    
+
     # ------------------------------------------------------------------------------------------------------------ #
-    
+
     def getString(self):
         quoteType = self.currChar
         stringValue = ""
@@ -81,5 +81,7 @@ class Lexer():
         self.lexerAdvance()
         stringToken = Token("TOKEN_STRING", stringValue)
         return stringToken
-        
-    
+
+    # ------------------------------------------------------------------------------------------------------------ #
+
+# ---------------------------------------------------------------------------------------------------------------- #
