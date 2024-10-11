@@ -1,5 +1,6 @@
 # Local Imports
 from lexer import Lexer
+from parser import Parser
 
 # ---------------------------------------------------------------------------------------------------------------- #
 
@@ -8,8 +9,10 @@ def main():
 
     with open(filePath, 'r') as file:
         fileContent = (file.read()).replace("\n", '')
-    print(fileContent)
-    _lexer = Lexer(fileContent)
+    #print(fileContent)
+
+    lexer = Lexer(fileContent)
+    parser = Parser(lexer.tokens)
 
 # ---------------------------------------------------------------------------------------------------------------- #
 

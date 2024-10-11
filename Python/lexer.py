@@ -19,6 +19,11 @@ class Lexer():
                 '/' : "TOKEN_FSLASH", 
                 '^' : "TOKEN_POWER",  
             }
+    
+    keywords = [
+        "print",
+        "int",
+    ]
 
     # ------------------------------------------------------------------------------------------------------------ #
 
@@ -27,7 +32,7 @@ class Lexer():
         self.pos = -1
         self.currChar = None   
         self.lexerAdvance() 
-        tokens = self.getTokens()
+        self.tokens = self.getTokens()
         
     # ------------------------------------------------------------------------------------------------------------ #
 
@@ -55,9 +60,8 @@ class Lexer():
                 tokens.append(Token(self.singleCharTokens[self.currChar], self.currChar))
                 self.lexerAdvance()
 
-        #print(tokens)
-        for token in tokens:
-            print (token.type + ' : ' + token.value)
+        #for token in tokens:
+        #    print (token.type + ' : ' + token.value)
 
     # ------------------------------------------------------------------------------------------------------------ #
 
@@ -66,7 +70,7 @@ class Lexer():
         while (self.currChar).isalnum():
             idValue += self.currChar
             self.lexerAdvance()
-        idToken = Token("TOKEN_ID", idValue)
+        idToken = Token("TOKEN_KEYWORD", idValue) if idValue in self.keywords else  Token("TOKEN_ID", idValue)
         return idToken
 
     # ------------------------------------------------------------------------------------------------------------ #
