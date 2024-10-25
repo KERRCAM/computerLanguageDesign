@@ -2,4 +2,5 @@
 
 
 
-ID -> EQUALS -> ID | ANY DATATYPE
+Definition
+KEYWORD -> ID -> EQUALS -> ID 

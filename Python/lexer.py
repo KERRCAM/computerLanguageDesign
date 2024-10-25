@@ -62,6 +62,7 @@ class Lexer():
 
         #for token in tokens:
         #    print (token.type + ' : ' + token.value)
+        return tokens
 
     # ------------------------------------------------------------------------------------------------------------ #
 
