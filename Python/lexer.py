@@ -7,19 +7,19 @@ class Lexer():
 
     singleCharTokens = {
                 '=' : "TOKEN_EQUALS",
-                ';' : "TOKEN_SEMI",   
+                ';' : "TOKEN_SEMI",
                 '(' : "TOKEN_LPAREN",
                 ')' : "TOKEN_RPAREN",
                 '{' : "TOKEN_LBRACE",
                 '}' : "TOKEN_RBRACE",
-                ',' : "TOKEN_COMMA",  
-                '+' : "TOKEN_PLUS",   
-                '-' : "TOKEN_MINUS",  
-                '*' : "TOKEN_STAR",   
-                '/' : "TOKEN_FSLASH", 
-                '^' : "TOKEN_POWER",  
+                ',' : "TOKEN_COMMA",
+                '+' : "TOKEN_PLUS",
+                '-' : "TOKEN_MINUS",
+                '*' : "TOKEN_STAR",
+                '/' : "TOKEN_FSLASH",
+                '^' : "TOKEN_POWER",
             }
-    
+
     keywords = [
         "print",
         "int",
@@ -28,12 +28,12 @@ class Lexer():
     # ------------------------------------------------------------------------------------------------------------ #
 
     def __init__(self, text):
-        self.text = text 
+        self.text = text
         self.pos = -1
-        self.currChar = None   
-        self.lexerAdvance() 
+        self.currChar = None
+        self.lexerAdvance()
         self.tokens = self.getTokens()
-        
+
     # ------------------------------------------------------------------------------------------------------------ #
 
     def lexerAdvance(self):
@@ -60,8 +60,11 @@ class Lexer():
                 tokens.append(Token(self.singleCharTokens[self.currChar], self.currChar))
                 self.lexerAdvance()
 
-        #for token in tokens:
-        #    print (token.type + ' : ' + token.value)
+        # LEXER TEST PRINT
+        for token in tokens:
+            print (token.type + ' : ' + token.value)
+
+
         return tokens
 
     # ------------------------------------------------------------------------------------------------------------ #

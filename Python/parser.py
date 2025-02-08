@@ -30,7 +30,7 @@ class Parser():
             self.consumeExpression()
 
         else:
-            print ("ERROR -> INVALID SYNTAX\nNo necognised definition or expression")
+            print ("ERROR -> INVALID SYNTAX\nNo recognised definition or expression")
 
     # ------------------------------------------------------------------------------------------------------------ #
 
